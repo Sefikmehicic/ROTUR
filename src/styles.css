@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Fredoka+One&family=Lexend:wght@400;600&family=Montserrat:wght@400;600&family=STIX+Two+Text:wght@700&display=swap');
+
+/* Variables */
+:root {
+    /* MEDIA SIZES */
+    --iphone-width: 415px;
+
+    /* COLORS */
+    --primary-color: #24595A;
+    --primary-color-hover: #1e4a4b;
+    --secondary-color: #2c8789;
+
+    /* Experimental colors */
+    --orange-cta: #eda85a;
+    --orange-cta-2: #db742f;
+    --orange-cta-2-hover: #b4612a;
+}
+
+body{
+    position: relative;
+    min-height: 100vh;
+    background-color: #FDFDFD;
+    color: black;
+    font-family: 'Lexend', sans-serif;
+}

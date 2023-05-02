@@ -1,16 +1,38 @@
 <div class="container d-flex justify-content-center align-items-center">
-    <div class="col-auto card shadow p-5">
+    <div class="col-lg-4 card shadow p-5">
         <p class="fs-1 text-center">Logga in</p>
         <form [formGroup]="form">
-            <input type="email" placeholder="E-post" class="form-control" formControlName="email">
-            <input type="password" placeholder="Lösenord" class="form-control" formControlName="password">
+            <div class="form-floating">
+                <input id="emailInput" type="email" placeholder="E-post" class="form-control" formControlName="email">
+                <label for="emailInput">E-post</label>
+            </div>
+            <div class="form-floating">
+                <input id="passwordInput" type="password" placeholder="Lösenord" class="form-control"
+                    formControlName="password">
+                <label for="passwordInput">Lösenord</label>
+            </div>
+            <div class="alert alert-danger login-error text-center" test-id="login-error-message" role="alert" *ngIf="errorLoggingIn">
+                Felaktigt lösenord eller E-post
+              </div>
             <hr>
-            <button class="btn btn-secondary" href="#" [disabled]="!form.get('email')!.valid" test-id="recover-password-button">glömt lösenord</button>
-            <button class="btn btn-primary" [disabled]="!form.valid"
-            test-id="login-button">
+            <div class="d-flex justify-content-end mb-2">
+                <button type="button" class="btn btn-sm btn-secondary" [disabled]="!form.get('email')!.valid"
+                test-id="recover-password-button">glömt lösenord</button>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" [disabled]="!form.valid" (click)="login()" *ngIf="!isLoggingIn"
+                test-id="login-button">
                 Logga in
             </button>
-            <button class="btn btn-secondary">Skapa konto</button>
+            <button class="btn btn-primary" *ngIf="isLoggingIn" test-id="login-loader" >
+                <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </button>
+            <button class="btn btn-outline-secondary">Skapa konto</button>
+            </div>
+
+
         </form>
     </div>
 </div>
