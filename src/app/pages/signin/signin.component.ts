@@ -11,8 +11,16 @@ import { AuthenticationService } from './services/authentication.service';
 export class SigninComponent implements OnInit {
 
   form!: FormGroup;
+
   isLoggingIn = false;
+  isRecoveringPassword = false;
+
   errorLoggingIn = false;
+  errorRecoveringPassword = false;
+  errorMessage = '';
+
+  SuccessRecoveringPassword = false;
+  successMessage = '';
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -37,7 +45,23 @@ export class SigninComponent implements OnInit {
       this.router.navigate(['']);
     }, (error: any) => {
       this.errorLoggingIn = true;
+      this.errorMessage = 'Felaktig e-post eller lösenord';
       this.isLoggingIn = false;
+    })
+  }
+
+  recoverPassword() {
+    this.isRecoveringPassword = true;
+
+    this.authenticationService.recoverPassword(this.form.value.email).subscribe(() => {
+      this.isRecoveringPassword = false;
+      this.SuccessRecoveringPassword = true;
+      this.successMessage = 'Mejl skickad för återställning av lösenord\n(Mejlet kan hamna i skräppost)'
+    }, (error: any) => {
+      console.log(error)
+      this.isRecoveringPassword = false;
+      this.errorRecoveringPassword = true;
+      this.errorMessage = error.message;
     })
   }
 }

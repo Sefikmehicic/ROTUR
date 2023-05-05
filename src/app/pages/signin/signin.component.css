@@ -27,8 +27,8 @@ input {
     margin-bottom: 1rem;
 }
 
-.login-error {
-    padding: .2rem;
+.message {
+    padding: .2rem!important;
 }
 
 img {

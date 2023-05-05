@@ -145,7 +145,7 @@ describe('SigninComponent', () => {
         })
 
         it('then show error message', () => {
-          expect(page.querySelector('[test-id="login-error-message"]')).not.toBeNull();
+          expect(page.querySelector('[test-id="error-message"]')).not.toBeNull();
         })
       })
     })
@@ -153,13 +153,61 @@ describe('SigninComponent', () => {
 
   describe('Recover password flow', () => {
 
-    describe('given user clicks on revocer password button', ()  => {
+    describe('given user clicks on recover password button', ()  => {
 
       beforeEach(() => {
         setEmail('valid@email.com');
         recoverPasswordButton().click();
+        fixture.detectChanges();
       })
 
+      it('then show recover password loader', () => {
+        expect(recoverPasswordLoader()).not.toBeNull();
+      })
+
+      it('then hide recover password button', () => {
+        expect(recoverPasswordButton()).toBeNull();
+      })
+
+      describe('when recover password success', () => {
+
+        beforeEach(() => {
+          authenticationService._recoverPasswordResponse.next({});
+          fixture.detectChanges();
+        })
+
+        it('then hide recover password loader', () => {
+          expect(recoverPasswordLoader()).toBeNull();
+        })
+  
+        it('then show recover password button', () => {
+          expect(recoverPasswordButton()).not.toBeNull();
+        })
+
+        it('then show success message', () => {
+          expect(page.querySelector('[test-id="success-message"]')).not.toBeNull();
+        })
+      })
+
+      describe('when recover password fails', () => {
+
+        beforeEach(() => {
+          authenticationService._recoverPasswordResponse.error({message: 'any message'});
+          fixture.detectChanges();
+        })
+
+        it('then hide recover password loader', () => {
+          expect(recoverPasswordLoader()).toBeNull();
+        })
+  
+        it('then show recover password button', () => {
+          expect(recoverPasswordButton()).not.toBeNull();
+        })
+
+        it('then show error message', () => {
+          expect(page.querySelector('[test-id="error-message"]')).not.toBeNull();
+        })
+      })
     })
 
   })
@@ -178,6 +226,10 @@ describe('SigninComponent', () => {
     return page.querySelector('[test-id="recover-password-button"]');
   }
 
+  function recoverPasswordLoader() {
+    return page.querySelector('[test-id="recover-password-loader"]');
+  }
+
   function LoginButton() {
     return page.querySelector('[test-id="login-button"]');
   }
@@ -189,7 +241,13 @@ describe('SigninComponent', () => {
 
 class AuthenticationServiceMock {
   _signInRespone = new Subject();
+  _recoverPasswordResponse = new Subject();
+
   signIn() {
     return this._signInRespone.asObservable();
+  }
+
+  recoverPassword() {
+    return this._recoverPasswordResponse.asObservable();
   }
 }
