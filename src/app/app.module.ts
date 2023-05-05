@@ -8,11 +8,12 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { BlankComponent } from './pages/mocks/blank/blank.component';
+import { NavbarModule } from './components/navbar/navbar.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlankComponent
+    BlankComponent,
   ],
   imports: [
     BrowserModule,
