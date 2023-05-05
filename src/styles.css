@@ -2,8 +2,6 @@
 
 /* Variables */
 :root {
-    /* MEDIA SIZES */
-    --iphone-width: 415px;
 
     /* COLORS */
     --primary-color: #24595A;
@@ -18,8 +16,29 @@
 
 body{
     position: relative;
-    min-height: 100vh;
     background-color: #FDFDFD;
     color: black;
     font-family: 'Lexend', sans-serif;
 }
+
+.card {
+    border-radius: 0;
+    padding-inline: 2rem;
+    padding-block: 4rem;
+}
+
+/* btn-primary */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+    .btn-primary:hover {
+        background-color: var(--primary-color-hover);
+        border-color: var(--primary-color);
+    }
+    .btn-primary:disabled {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+    

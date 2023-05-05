@@ -1,5 +1,5 @@
-<div class="container d-flex justify-content-center align-items-center">
-    <div class="col-lg-4 card shadow p-5">
+<div class="d-flex container signin-container">
+    <div class="col-lg-5 col-md-8 card shadow">
         <p class="fs-1 text-center">Logga in</p>
         <form [formGroup]="form">
             <div class="form-floating">
@@ -11,28 +11,27 @@
                     formControlName="password">
                 <label for="passwordInput">Lösenord</label>
             </div>
-            <div class="alert alert-danger login-error text-center" test-id="login-error-message" role="alert" *ngIf="errorLoggingIn">
+            <div class="alert alert-danger login-error text-center" test-id="login-error-message" role="alert"
+                *ngIf="errorLoggingIn">
                 Felaktigt lösenord eller E-post
-              </div>
+            </div>
             <hr>
             <div class="d-flex justify-content-end mb-2">
                 <button type="button" class="btn btn-sm btn-secondary" [disabled]="!form.get('email')!.valid"
-                test-id="recover-password-button">glömt lösenord</button>
+                    test-id="recover-password-button">glömt lösenord</button>
             </div>
             <div class="d-grid gap-2">
                 <button class="btn btn-primary" [disabled]="!form.valid" (click)="login()" *ngIf="!isLoggingIn"
-                test-id="login-button">
-                Logga in
-            </button>
-            <button class="btn btn-primary" *ngIf="isLoggingIn" test-id="login-loader" >
-                <div class="spinner-border spinner-border-sm" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </button>
-            <button class="btn btn-outline-secondary">Skapa konto</button>
+                    test-id="login-button">
+                    Logga in
+                </button>
+                <button class="btn btn-primary" *ngIf="isLoggingIn" test-id="login-loader">
+                    <div class="spinner-border spinner-border-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </button>
+                <button class="btn btn-outline-secondary">Skapa konto</button>
             </div>
-
-
         </form>
     </div>
 </div>

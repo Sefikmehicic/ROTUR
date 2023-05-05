@@ -1,5 +1,26 @@
-.container {
-    height: 100vh;
+/* PHONE SCREEN SETTINGS */
+@media screen and (max-width: 768px){
+
+    .signin-container {
+        padding: 0;
+        display: block!important;
+        justify-content: center!important;
+        align-items: baseline!important;
+    }
+
+    .card {
+        padding-inline: 1rem!important;
+        border: none!important;
+        box-shadow: none!important;
+        background-color: #FDFDFD!important;
+
+    }
+}
+
+.signin-container {
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 input {
@@ -8,4 +29,8 @@ input {
 
 .login-error {
     padding: .2rem;
+}
+
+img {
+    width: 100px;
 }

@@ -151,6 +151,19 @@ describe('SigninComponent', () => {
     })
   })
 
+  describe('Recover password flow', () => {
+
+    describe('given user clicks on revocer password button', ()  => {
+
+      beforeEach(() => {
+        setEmail('valid@email.com');
+        recoverPasswordButton().click();
+      })
+
+    })
+
+  })
+
   function setEmail(value: string) {
     component.form.get('email')?.setValue(value);
     fixture.detectChanges();
