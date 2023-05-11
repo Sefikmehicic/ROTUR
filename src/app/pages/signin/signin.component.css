@@ -5,7 +5,6 @@
         padding: 0;
         display: block!important;
         justify-content: center!important;
-        align-items: baseline!important;
     }
 
     .card {
@@ -13,14 +12,23 @@
         border: none!important;
         box-shadow: none!important;
         background-color: #FDFDFD!important;
+    }
 
+    .img {
+        margin-bottom: 0!important;
+    }
+
+    .img-container {
+        display: flex;
+        align-items: center!important;
+        justify-content: center!important;
     }
 }
 
 .signin-container {
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
+    flex-direction: column;
 }
 
 input {
@@ -31,6 +39,11 @@ input {
     padding: .2rem!important;
 }
 
-img {
-    width: 100px;
+.img-container {
+    margin-top: 2rem;
+}
+
+.img {
+    margin-bottom: 2rem;
+    width: 80px;
 }

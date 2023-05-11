@@ -9,6 +9,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { BlankComponent } from './pages/mocks/blank/blank.component';
 import { NavbarModule } from './components/navbar/navbar.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+// import { authReducer } from './state/auth/auth.reducer';
+// import { AuthEffects } from './state/auth/auth.effects';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { NavbarModule } from './components/navbar/navbar.module';
     NgbModule,
 
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+     StoreModule.forRoot(),
+     EffectsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

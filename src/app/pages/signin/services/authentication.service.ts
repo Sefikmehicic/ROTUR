@@ -8,7 +8,7 @@ import { Observable, from, of } from 'rxjs';
 export class AuthenticationService {
 
   constructor(
-    private auth: AngularFireAuth
+    public auth: AngularFireAuth
   ) { }
 
   signIn(params: SignIn): Observable<any> {

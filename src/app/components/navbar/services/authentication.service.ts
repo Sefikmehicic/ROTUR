@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Observable, from } from 'rxjs';
+import { Observable, from, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  user$: Observable<any> | undefined;
+
 
   constructor(
     private auth: AngularFireAuth
-    ) { }
+    ) {}
 
     logout(): Observable<void> {
       return from(this.auth.signOut());

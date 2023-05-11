@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-signin',
@@ -25,7 +26,8 @@ export class SigninComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class SigninComponent implements OnInit {
       this.errorMessage = 'Felaktig e-post eller lösenord';
       this.isLoggingIn = false;
     })
+
   }
 
   recoverPassword() {
